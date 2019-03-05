@@ -1,0 +1,27 @@
+# Test Ansible network_cli connection
+
+This script provides a quick and dirty way to test the Ansible network_cli
+connection plugin.  This script will connect to a remote host and issue a 
+set of commands.  It is currently hardcoded to work with Linux hosts as 
+opposed to network devices but the mechanics are the same.  This script
+will bypass most of the internal Ansible machine and direclty invoke the 
+connection plugin.
+
+In order to use this script, the following environment variables must be
+set.
+
+```
+export ANSIBLE_CLICONF_PLUGINS=$PWD/cliconf_plugins
+export ANSIBLE_TERMINAL_PLUGINS=$PWD/terminal_plugins
+```
+
+To run the script, issue the following command:
+
+```
+$ python connect.py 192.168.10.1 -u ansible -P ansible
+```
+
+This script has been tested to work with Ansible 2.7 or later and Fedora 29.
+
+This script is made available for free as-is for testing only and is not 
+maintaned or supported
