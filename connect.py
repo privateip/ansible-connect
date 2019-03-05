@@ -14,7 +14,7 @@ COMMANDS = frozenset([
 def get_play_context(args):
     pc = PlayContext()
     pc.connection = 'network_cli'
-    pc.network_os = 'linux'
+    pc.network_os = args.network_os
     pc.remote_addr = args.host
     pc.port = args.port
     pc.timeout = args.timeout
@@ -36,15 +36,23 @@ def get_connection(args):
 def main():
     parser = ArgumentParser()
 
-    parser.add_argument('host')
+    parser.add_argument('host',
+                        help='Hostname or IP address of the remote host')
 
-    parser.add_argument('-p', '--port', default=22)
+    parser.add_argument('-p', '--port', default=22,
+                        help='The SSH port to connect the to')
 
-    parser.add_argument('-u', '--username')
+    parser.add_argument('-u', '--username',
+                        help='The username used to authenticate with')
 
-    parser.add_argument('-P', '--password')
+    parser.add_argument('-P', '--password',
+                        help='The password used to authenticate with')
 
-    parser.add_argument('-t', '--timeout', default=30)
+    parser.add_argument('-t', '--timeout', default=30,
+                        help='The timeout value for the connection')
+
+    parser.add_argument('-n', '--network-os', default='linux',
+                        help='The network-os plugin to load')
 
     args = parser.parse_args()
 
