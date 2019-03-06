@@ -59,10 +59,10 @@ def main():
     conn = get_connection(args)
 
     for item in COMMANDS:
-        print 'running command: {}'.format(item)
-        print '---------------'
-        print conn.get(item)
-        print
+        print('running command: {}'.format(item))
+        print('---------------')
+        print(conn.get(item))
+        print()
 
 if __name__ == '__main__':
     main()
